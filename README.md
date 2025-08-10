@@ -1,12 +1,89 @@
-# React + Vite
+# 🌐 Personal Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive and modern personal portfolio website built using **React.js** and **Vite**.  
+This project showcases my skills, projects, and professional journey in an interactive way.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## Expanding the ESLint configuration
+### 🔗 [View Live Portfolio](https://mahtab-portfolio-xi.vercel.app/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📂 Project Structure
+
+```
+PORTFOLIO/
+├── public/
+│ └── favicon.jpg
+├── src/
+│ ├── assets/       #images
+│ ├── components/
+│ │ ├── About.jsx
+│ │ ├── Contact.jsx
+│ │ ├── Education.jsx
+│ │ ├── Experience.jsx
+│ │ ├── Footer.jsx
+│ │ ├── Navbar.jsx
+│ │ ├── Profiles.jsx
+│ │ ├── Project.jsx
+│ │ ├── Skills.jsx
+│ │ ├── BlurBlob.jsx
+│ ├── data.js
+│ ├── index.css
+│ ├── App.jsx
+│ ├── main.jsx
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+├── README.md
+├── vite.config.js
+
+```
+
+## 🚀 Features
+
+- 📱 **Responsive Design** – Works seamlessly on mobile, tablet, and desktop.
+- 🎨 **Modern UI** – Clean layout with smooth transitions.
+- 🖼 **Reusable Components** – Modular and maintainable code structure.
+- ⚡ **Fast Performance** – Powered by **Vite** for instant builds and hot reload.
+- 🌟 **Custom Styling** – Styled with Tailwind CSS for a personalized look.
+- 📂 **Dynamic Content** – Data-driven sections for easy updates.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React.js, Vite
+- **Styling:** Tailwind CSS
+- **Language:** JavaScript (ES6+)
+- **Deployment:** Vercel
+
+---
+
+## 📦 Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/mahtabkhan9/mahtab-portfolio.git
+   cd portfolio
+
+2. **Install dependencies**
+    ```bash
+    npm install
+3. **Run the project locally**
+    ```bash
+    npm run dev
+---
+## 📧 Contact
+
+If you'd like to get in touch or collaborate:
+
+- Email: mahtabalam7173@gnmail.com
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/mahtab7860/)
+- GitHub: [GitHub](https://github.com/mahtabkhan9)
+
+---
+
+### *⭐ If you like this project, feel free to star the repo!*

@@ -33,6 +33,7 @@ import phpLogo from './assets/tech_logo/php.png';
 // Experience Section Logo's
 import grentechLogo from './assets/company_logo/grentechin_logo.jpeg';
 import atplcLogo from './assets/company_logo/atplc_logo.png';
+import prodigyLogo from './assets/company_logo/prodigy_infotech_logo.jpeg';
 
 // Education Section Logo's
 import gceLogo from './assets/education_logo/logo.jpg';
@@ -64,14 +65,14 @@ export const SkillsInfo = [
   {
     title: 'Backend',
     skills: [
-      { name: 'Springboot', logo: springbootLogo },
+      // { name: 'Springboot', logo: springbootLogo },
       { name: 'Node JS', logo: nodejsLogo },
       { name: 'Express JS', logo: expressjsLogo },
       { name: 'PHP', logo: phpLogo },
       { name: 'MySQL', logo: mysqlLogo },
       { name: 'MongoDB', logo: mongodbLogo },
       { name: 'Firebase', logo: firebaseLogo },
-      { name: 'PostgreSQL', logo: postgreLogo },
+      // { name: 'PostgreSQL', logo: postgreLogo },
     ],
   },
   {
@@ -82,7 +83,7 @@ export const SkillsInfo = [
       { name: 'Java', logo: javaLogo },
       { name: 'Python', logo: pythonLogo },
       { name: 'JavaScript', logo: javascriptLogo },
-      { name: 'TypeScript', logo: typescriptLogo },
+      // { name: 'TypeScript', logo: typescriptLogo },
     ],
   },
   {
@@ -101,25 +102,25 @@ export const SkillsInfo = [
 ];
 
 export const experiences = [
-  {
-    id: 0,
-    img: grentechLogo,
-    role: "Software Developer Intern",
-    company: "Grentech",
-    date: "August 2025 - Present",
-    desc: "Developed dynamic and scalable web applications using the MERN stack, handling both frontend and backend development. Collaborated with cross-functional teams to build responsive UI, implement RESTful APIs, and optimize application performance in an agile environment.",
-    skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "React JS",
-      "Node JS",
-      "Tailwind CSS",
-      "MongoDb",
-      "Redux",
-      "Express JS"
-    ],
-  },
+  // {
+  //   id: 0,
+  //   img: grentechLogo,
+  //   role: "Software Developer Intern",
+  //   company: "Grentech",
+  //   date: "August 2025 - Present",
+  //   desc: "Developed dynamic and scalable web applications using the MERN stack, handling both frontend and backend development. Collaborated with cross-functional teams to build responsive UI, implement RESTful APIs, and optimize application performance in an agile environment.",
+  //   skills: [
+  //     "HTML",
+  //     "CSS",
+  //     "JavaScript",
+  //     "React JS",
+  //     "Node JS",
+  //     "Tailwind CSS",
+  //     "MongoDb",
+  //     "Redux",
+  //     "Express JS"
+  //   ],
+  // },
   {
       id: 1,
       img: atplcLogo,
@@ -136,6 +137,19 @@ export const experiences = [
           "Bootstrap",
           "XAMPP",
           "Apache",
+      ],
+  },
+  {
+      id: 2,
+      img: prodigyLogo,
+      role: "Web Development Internship Program ",
+      company: "Prodigy Infotech",
+      date: "Dec 2023 - Jan 2024",
+      desc: "Developed responsive and user-friendly web applications using HTML, CSS, and JavaScript & contributed to project design and implementation, focusing on performance and usability improvements.",
+      skills: [
+          "HTML",
+          "CSS",
+          "JavaScript",
       ],
   },
 ];
@@ -224,10 +238,3 @@ export const projects = [
   }
 ];
 
-export const profiles = [
-  {
-    id: 0,
-    name: "GitHub",
-    url: ""
-  }
-]

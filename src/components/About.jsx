@@ -40,7 +40,7 @@ const About = () => {
                     {/* resume button */}
                     <div className='flex flex-col sm:flex-row items-center justify-center md:justify-start space-x-0 sm:space-x-4 space-y-4 sm:space-y-0'>
                     <a
-                        href="https://drive.google.com/file/d/16Bxw2TAUVrz2pXeDzn47G1XD-TYGMN-D/view?usp=drive_link"
+                        href="https://drive.google.com/file/d/1aEvrNd2Ph1LpBikElGz_yFFCn4CKDFLs/view?usp=drivesdk"
                         target='_blank'
                         rel='noopener noreferrer'
                         className='inline-block text-white py-3 px-8 rounded-full mt-5v text-lg font-bold transition duration-300 transform hover:scale-105'

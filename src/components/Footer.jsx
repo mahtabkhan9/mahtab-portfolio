@@ -1,6 +1,6 @@
 import React from 'react'
-import { FaLinkedin, FaInstagram } from 'react-icons/fa';
-import { FaXTwitter } from "react-icons/fa6";
+import { FaLinkedin, FaInstagram, FaGithub } from 'react-icons/fa';
+import { FaG, FaXTwitter } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
 
 const Footer = () => {
@@ -21,8 +21,8 @@ const Footer = () => {
           {[
             { name: "About", id: "about" },
             { name: "Skills", id: "skills" },
-            { name: "Experience", id: "experience" },
             { name: "Projects", id: "projects" },
+            { name: "Experience", id: "experience" },
             { name: "Education", id: "education" },
           ].map((item, index) => (
             <button key={index}
@@ -37,8 +37,8 @@ const Footer = () => {
         {/* social */}
         <div className='flex flex-wrap justify-center space-x-4 mt-6'>
           {[
+            {icon: <FaGithub/>, link: 'https://www.github.com/mahtabkhan9'},
             {icon: <FaLinkedin/>, link: 'https://www.linkedin.com/in/mahtab7860'},
-            {icon: <FaXTwitter/>, link: 'https://www.x.com/mahtab_7173'},
             {icon: <FaInstagram/>, link: 'https://www.instagram.com/mahtab_khan1971/'},
             {icon: <IoMail />, link: 'mailto:mahtabalam7173@gmail.com'},
           ].map((item, index) => (
@@ -54,7 +54,7 @@ const Footer = () => {
 
         {/* copyright */}
         <p className='text-sm text-gray-400 mt-6'>
-          &copy; 2025 Mahtab Alam | All Rights Reserved.
+          &copy; 2026 Mahtab Alam | All Rights Reserved.
         </p>
       </div>
     </footer>

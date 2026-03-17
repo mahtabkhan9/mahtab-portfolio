@@ -31,15 +31,15 @@ import motionLogo from './assets/tech_logo/framer-motion.png';
 import phpLogo from './assets/tech_logo/php.png';
 
 // Experience Section Logo's
+import creditBucketLogo from './assets/company_logo/creditbucketLogo.jpg';
 import grentechLogo from './assets/company_logo/grentechin_logo.jpeg';
-import atplcLogo from './assets/company_logo/atplc_logo.png';
-import prodigyLogo from './assets/company_logo/prodigy_infotech_logo.jpeg';
 
 // Education Section Logo's
 import gceLogo from './assets/education_logo/logo.jpg';
 import bsebLogo from './assets/education_logo/bseb.jpg';
 
 // Project Section Logo's
+import eventor from './assets/work_logo/eventor.png';
 import renderly from './assets/work_logo/renderly.png';
 import ems from './assets/work_logo/ems.png';
 import drive from './assets/work_logo/drive.png';
@@ -68,7 +68,6 @@ export const SkillsInfo = [
       // { name: 'Springboot', logo: springbootLogo },
       { name: 'Node JS', logo: nodejsLogo },
       { name: 'Express JS', logo: expressjsLogo },
-      { name: 'PHP', logo: phpLogo },
       { name: 'MySQL', logo: mysqlLogo },
       { name: 'MongoDB', logo: mongodbLogo },
       { name: 'Firebase', logo: firebaseLogo },
@@ -83,7 +82,7 @@ export const SkillsInfo = [
       { name: 'Java', logo: javaLogo },
       { name: 'Python', logo: pythonLogo },
       { name: 'JavaScript', logo: javascriptLogo },
-      // { name: 'TypeScript', logo: typescriptLogo },
+      { name: 'TypeScript', logo: typescriptLogo },
     ],
   },
   {
@@ -102,56 +101,43 @@ export const SkillsInfo = [
 ];
 
 export const experiences = [
-  // {
-  //   id: 0,
-  //   img: grentechLogo,
-  //   role: "Software Developer Intern",
-  //   company: "Grentech",
-  //   date: "August 2025 - Present",
-  //   desc: "Developed dynamic and scalable web applications using the MERN stack, handling both frontend and backend development. Collaborated with cross-functional teams to build responsive UI, implement RESTful APIs, and optimize application performance in an agile environment.",
-  //   skills: [
-  //     "HTML",
-  //     "CSS",
-  //     "JavaScript",
-  //     "React JS",
-  //     "Node JS",
-  //     "Tailwind CSS",
-  //     "MongoDb",
-  //     "Redux",
-  //     "Express JS"
-  //   ],
-  // },
   {
-      id: 1,
-      img: atplcLogo,
-      role: "Full Stack Development Training Internship",
-      company: "ATPLC",
-      date: "May 2025 - July 2025",
-      desc: "Developed dynamic and scalable web applications using HTML, CSS, JavaScript, PHP, and MySQL, managing both frontend and backend development. Utilized Bootstrap for responsive UI design, configured XAMPP and Apache for local development and deployment, and optimized application performance while collaborating with cross-functional teams in an agile environment.",
-      skills: [
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "MySQL",
-          "PHP",
-          "Bootstrap",
-          "XAMPP",
-          "Apache",
-      ],
+    id: 0,
+    img: creditBucketLogo,
+    role: "Software Developer Intern",
+    company: "CreditBucket Technologies Pvt. Ltd. (Samriddh Kendra)",
+    date: "December 2025 - Present",
+    desc: "Developed a Bank Statement Analyzer to automate financial data extraction, reducing manual processing time by 60%. Implemented data validation and parsing mechanisms to achieve 90% accuracy in transaction consistency. Built 10+ analytical modules to support internal financial assessment and reporting processes.",
+    skills: [
+      "JavaScript",
+      "Node JS",
+      "Express JS",
+      "MongoDB",
+      "Data Validation",
+      "Data Parsing",
+      "REST APIs",
+      "Analytical Modules Development"
+    ],
   },
   {
-      id: 2,
-      img: prodigyLogo,
-      role: "Web Development Internship Program ",
-      company: "Prodigy Infotech",
-      date: "Dec 2023 - Jan 2024",
-      desc: "Developed responsive and user-friendly web applications using HTML, CSS, and JavaScript & contributed to project design and implementation, focusing on performance and usability improvements.",
-      skills: [
-          "HTML",
-          "CSS",
-          "JavaScript",
-      ],
-  },
+    id: 1,
+    img: grentechLogo,
+    role: "Software Developer Intern",
+    company: "Grentech",
+    date: "August 2025 - November 2025",
+    desc: "Developed 10+ responsive UI components using React.js and Tailwind CSS from Figma designs. Translated design prototypes into pixel-perfect interfaces with 90% design accuracy. Improved code consistency and collaboration using Git and GitHub.",
+    skills: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React JS",
+      "Tailwind CSS",
+      "Responsive UI Development",
+      "Figma",
+      "Git",
+      "GitHub"
+    ],
+  }
 ];
 
 export const education = [
@@ -160,7 +146,7 @@ export const education = [
     img: gceLogo,
     school: "Gaya College of Engineering, Gaya",
     date: "Sept 2022 - July 2026",
-    grade: "8.04 CGPA",
+    grade: "8.02 CGPA",
     desc: "I am pursuing my final-year of B.Tech in CSE from Gaya College of Engineering, Gaya. During my time at GCE, I gained a strong foundation in programming, software development, and computer science principles. I have studied courses such as Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Web Development, and Software Engineering. I actively participated in various workshops and technical events, which enhanced my skills and knowledge. My experience at GCE Gaya has been instrumental in shaping my technical abilities and professional growth.",
     degree: "Bachelor of Technology - Computer Science & Engineering",
   },
@@ -179,7 +165,7 @@ export const education = [
     school: "Muslim High School, Bhagalpur",
     date: "2018",
     grade: "62.60%",
-    desc: "I completed my class 10 boards education from Muslim Minority Inter College, under BSEB Patna board.",
+    desc: "I completed my class 10 boards education from Muslim High School, under BSEB Patna board.",
     degree: "Class 10",
   },
 ];
@@ -188,6 +174,16 @@ export const education = [
 export const projects = [
   {
     id: 0,
+    title: "Eventor",
+    description:
+      "A full-stack event management platform built using the MERN stack. Users can create, manage, and RSVP to events with real-time capacity control. Implemented atomic MongoDB operations to eliminate 100% of overbooking scenarios under concurrent requests. Designed efficient REST APIs for CRUD operations, ensuring fast response times and seamless user experience.",
+    image: eventor,
+    tags: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "REST API", "Concurrency Handling", "CRUD"],
+    github: "https://github.com/mahtabkhan9/eventor",
+    webapp: "https://eventor-ten.vercel.app/",
+  },
+  {
+    id: 1,
     title: "Renderly.ai",
     description:
       "A full-stack AI image generation platform built using the MERN stack. Users can generate AI images from text prompts via the Clipdrop API, manage credits, and purchase more via Razorpay. Features secure JWT authentication, user dashboards, and a modern, responsive UI using Tailwind CSS and Framer Motion.",
@@ -197,7 +193,7 @@ export const projects = [
     webapp: "https://renderly-omega.vercel.app/",
   },
   {
-    id: 1,
+    id: 2,
     title: "Employee Management System",
     description:
       "A React-based application to manage employees with role-based dashboards. Admins can assign tasks, track status, and manage employees, while employees view and update their assigned tasks. Data persistence is handled using localStorage, and Context API is used for managing global authentication state.",
@@ -207,7 +203,7 @@ export const projects = [
     webapp: "https://ems-pink.vercel.app/",
   },
   {
-    id: 2,
+    id: 3,
     title: "Drive - File Storage Backend App",
     description:
       "A secure file storage backend application built with Node.js, Express, and MongoDB. It supports user authentication using JWT, file upload and retrieval via Cloudinary, and file handling through Multer. The interface is rendered using EJS templates and styled with Tailwind CSS.",
@@ -217,7 +213,7 @@ export const projects = [
     webapp: "https://drive-4ii8.onrender.com/",
   },
   {
-    id: 3,
+    id: 4,
     title: "User Management CRUD App",
     description:
       "A user management app for managing user data, including features for creating, reading, updating, and deleting users.",
@@ -227,7 +223,7 @@ export const projects = [
     webapp: "https://user-management-app-gamma.vercel.app/",
   },
   {
-    id: 4,
+    id: 5,
     title: "ToDo List App",
     description:
       "A task management application that allows users to add, and delete tasks, helping them stay organized and productive.",

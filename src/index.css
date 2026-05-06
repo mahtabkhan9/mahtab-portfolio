@@ -1,22 +1,426 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 
-* {
-    font-family: 'Poppins', sans-serif;
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+:root {
+  --bg: #080808;
+  --bg-2: #0f0f0f;
+  --surface: #141414;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #F5F5F0;
+  --text-muted: rgba(245, 245, 240, 0.45);
+  --text-faint: rgba(245, 245, 240, 0.2);
+  --accent: #C8FF00;
+  --accent-dim: rgba(200, 255, 0, 0.12);
+  --accent-muted: rgba(200, 255, 0, 0.06);
+  --font-display: 'Clash Display', sans-serif;
+  --font-body: 'Satoshi', sans-serif;
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scrollbar-width: smooth;
+  scroll-behavior: auto;
+  font-size: 16px;
 }
 
-@layer utilities {
-    .clip-path-custom {
-      clip-path: polygon(0 0, 100% 0, 100% 98%, 75% 95%, 0 100%);
-    }
-    .clip-path-custom-2 {
-      clip-path: polygon(0 0, 100% 0, 100% 98%, 25% 95%, 0 100%);
-    }
-    .clip-path-custom-3 {
-      clip-path: polygon(0 0, 100% 0, 100% 98%, 75% 96%, 0 100%);
-    }
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: none;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+/* ============================================
+   LENIS SMOOTH SCROLL
+   ============================================ */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b0e600;
+}
+
+/* ============================================
+   SELECTION
+   ============================================ */
+::selection {
+  background: var(--accent);
+  color: #000;
+}
+
+/* ============================================
+   NOISE TEXTURE OVERLAY
+   ============================================ */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+}
+
+/* ============================================
+   HIDE SCROLLBAR UTILITY
+   ============================================ */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ============================================
+   TEXT REVEAL CLIP ANIMATION
+   ============================================ */
+.reveal-wrap {
+  overflow: hidden;
+}
+.reveal-line {
+  display: block;
+  transform: translateY(110%);
+  transition: transform 1s var(--ease-expo);
+}
+.reveal-line.in-view {
+  transform: translateY(0);
+}
+
+/* ============================================
+   MARQUEE ANIMATION
+   ============================================ */
+@keyframes marquee-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 0;
+}
+.marquee-left  { animation: marquee-left  80s linear infinite; }
+.marquee-right { animation: marquee-right 80s linear infinite; }
+.marquee-left:hover,
+.marquee-right:hover {
+  animation-play-state: paused;
+}
+
+/* ============================================
+   MAGNETIC BUTTON BASE
+   ============================================ */
+.magnetic {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s var(--ease-expo);
+}
+
+/* ============================================
+   ACCENT GRADIENT TEXT
+   ============================================ */
+.text-accent-lime {
+  color: var(--accent);
+}
+.text-gradient-lime {
+  background: linear-gradient(135deg, var(--accent), #90ff00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================
+   OUTLINED TEXT
+   ============================================ */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(245, 245, 240, 0.2);
+}
+.text-outline-accent {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--accent);
+}
+
+/* ============================================
+   SECTION DIVIDER
+   ============================================ */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ============================================
+   LOADER
+   ============================================ */
+.loader-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   CURSOR
+   ============================================ */
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: difference;
+  border-radius: 50%;
+  background: var(--text);
+  transition: width 0.3s var(--ease-expo),
+              height 0.3s var(--ease-expo),
+              opacity 0.3s ease;
+}
+
+/* ============================================
+   NAV LINK HOVER
+   ============================================ */
+.nav-link {
+  position: relative;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.3s var(--ease-expo);
+}
+.nav-link:hover { color: var(--text); }
+.nav-link:hover::after { width: 100%; }
+
+/* ============================================
+   ACCORDION
+   ============================================ */
+.accordion-row {
+  border-top: 1px solid var(--border);
+  transition: background 0.4s ease;
+}
+.accordion-row:last-child {
+  border-bottom: 1px solid var(--border);
+}
+.accordion-row:hover {
+  background: rgba(245, 245, 240, 0.02);
+}
+
+/* ============================================
+   TAG PILL
+   ============================================ */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  background: transparent;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.tag-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-muted);
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: var(--accent);
+  color: #000;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  border: none;
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s var(--ease-expo), box-shadow 0.3s ease;
+}
+.btn-primary:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 40px rgba(200, 255, 0, 0.3);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.06em;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  cursor: none;
+  transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-muted);
+}
+
+/* ============================================
+   FORM INPUTS
+   ============================================ */
+.form-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 1.25rem 0;
+  color: var(--text) !important;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  outline: none;
+  cursor: none;
+  transition: border-color 0.3s ease;
+}
+.form-input:focus {
+  border-color: var(--accent);
+}
+.form-input::placeholder {
+  color: var(--text-faint);
+}
+
+/* Fix browser autofill dark mode styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text) !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--bg-2) inset !important;
+  box-shadow: 0 0 0px 1000px var(--bg-2) inset !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+/* ============================================
+   PROJECT CARD HOVER CURSOR
+   ============================================ */
+.project-cursor-area {
+  cursor: none;
+}
+
+/* ============================================
+   HORIZONTAL SCROLL SNAP
+   ============================================ */
+.projects-track {
+  display: flex;
+  gap: 1.5rem;
+  will-change: transform;
+}
+
+/* ============================================
+   FOOTER TICKER
+   ============================================ */
+.ticker-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* ============================================
+   SKILLS RESPONSIVENESS OVERRIDES
+   ============================================ */
+.skills-grid-container {
+  padding: 3rem;
+}
+@media (max-width: 500px) {
+  .skills-grid-container {
+    padding: 1.5rem !important;
+  }
+}
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 420px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+}
+@media (max-width: 360px) {
+  .skills-grid {
+    grid-template-columns: 1fr !important;
+  }
 }

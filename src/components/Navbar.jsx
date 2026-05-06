@@ -1,113 +1,268 @@
-import React, { useEffect, useState } from 'react'
-import { FiMenu, FiX } from 'react-icons/fi'
-import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
+import { FiGithub, FiLinkedin, FiArrowUpRight } from 'react-icons/fi';
+
+const navItems = [
+  { id: 'about', label: 'About', num: '01' },
+  { id: 'skills', label: 'Skills', num: '02' },
+  { id: 'projects', label: 'Projects', num: '03' },
+  { id: 'experience', label: 'Experience', num: '04' },
+  { id: 'contact', label: 'Contact', num: '05' },
+];
 
 const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { scrollY } = useScroll();
 
-    // scroll effect and change navbar background
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-        }
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const prev = scrollY.getPrevious();
+    setHidden(latest > prev && latest > 120);
+    setScrolled(latest > 40);
+  });
 
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        }
-    }, [])
+  const scrollTo = (id) => {
+    setMenuOpen(false);
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
 
-    // scroll function
-    const handleMenuToggle = (sectionId) => {
-        setActiveSection(sectionId);
-        setIsOpen(false);
-
-        const section = document.getElementById(sectionId);
-        if (section) {
-            section.scrollIntoView({ behavior: "smooth" });
-        }
+  // Lock body scroll and stop Lenis when mobile menu open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.classList.add('lenis-stopped');
+    } else {
+      document.body.style.overflow = '';
+      document.documentElement.classList.remove('lenis-stopped');
     }
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.classList.remove('lenis-stopped');
+    };
+  }, [menuOpen]);
 
-    const menuItems = [
-        { id: "about", label: "About" },
-        { id: "skills", label: "Skills" },
-        { id: "projects", label: "Projects" },
-        { id: "experience", label: "Experience" },
-        { id: "education", label: "Education" },
-    ]
+  return (
+    <>
+      <motion.header
+        variants={{ visible: { y: 0 }, hidden: { y: '-110%' } }}
+        animate={hidden ? 'hidden' : 'visible'}
+        transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 500,
+          padding: scrolled ? '1rem 5vw' : '1.75rem 5vw',
+          transition: 'padding 0.4s ease, background 0.4s ease, border-color 0.4s ease',
+          background: scrolled ? 'rgba(8,8,8,0.85)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(12px)' : 'none',
+          borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
+        {/* Logo */}
+        <button
+          onClick={() => scrollTo('about')}
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontWeight: 700,
+            fontSize: '1.5rem',
+            color: 'var(--text)',
+            letterSpacing: '-0.02em',
+            cursor: 'none',
+            background: 'none',
+            border: 'none',
+          }}
+        >
+          M<span style={{ color: 'var(--accent)' }}>A</span><span style={{ color: 'var(--accent)' }}>.</span>
+        </button>
 
-    return (
-        <nav className={`fixed top-0 w-full z-50 transition duration-300 px-[7vw] md:px-[7vw] lg:px-[20vw] ${isScrolled ? 'bg-[#050414]/50 backdrop-blur-md shadow-md' : 'bg-transparent'}`}>
-            <div className='text-white py-5 flex justify-between items-center'>
-
-                {/* Logo */}
-                <div className='text-lg font-semibold cursor-pointer'>
-                    <span className='text-[#8245ec]'>&lt;</span>
-                    <span className='text-white'>Mahtab</span>
-                    <span className='text-[#8245ec]'>/</span>
-                    <span className='text-white'>Alam</span>
-                    <span className='text-[#8245ec]'>&gt;</span>
-                </div>
-
-                {/* desktop menu */}
-                <ul className='hidden md:flex space-x-8 text-gray-200'>
-                    {menuItems.map(item => (
-                        <li key={item.id} className={`cursor-pointer hover:text-[#8245ec] transition duration-300 ${activeSection === item.id ? "text-[#8245ec]" : ""}`}>
-                            <button className='cursor-pointer' onClick={() => handleMenuToggle(item.id)}>
-                                {item.label}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-
-                {/* social icons */}
-                <div className='hidden md:flex space-x-8'>
-                    <a href="https://www.github.com/mahtabkhan9" target="_blank" rel="noopener noreferrer" className='text-gray-200 hover:text-[#8245ec] transition duration-300'>
-                        <FaGithub size={24} />
-                    </a>
-                    <a href="https://www.linkedin.com/in/mahtab7860/" target="_blank" rel="noopener noreferrer" className='text-gray-200 hover:text-[#8245ec] transition duration-300'>
-                        <FaLinkedin size={24} />
-                    </a>
-                </div>
-
-                {/* mobile menu */}
-                <div className='md:hidden'>
-                    {
-                        isOpen ? (
-                            <FiX className='text-3xl text-[#8245ec] cursor-pointer' onClick={() => setIsOpen(false)} />
-                        ) : (
-                            <FiMenu className='text-3xl text-[#8245ec] cursor-pointer' onClick={() => setIsOpen(true)} />
-                        )
-                    }
-                </div>
-            </div>
-
-            {/* mobile menu items */}
-            {isOpen && (
-                <div className='absolute top-16 left-1/2 transform -translate-x-1/2 w-4/5 bg-[#050414]/50 backdrop-filter backdrop-blur-lg z-50 rounded-lg shadow-lg md:hidden'>
-                    <ul className='flex flex-col items-center space-y-4 py-4 text-gray-200'>
-                        {menuItems.map(item => (
-                            <li key={item.id} className={`cursor-pointer hover:text-[#8245ec] transition duration-300 ${activeSection === item.id ? "text-[#8245ec]" : ""}`}>
-                                <button onClick={() => handleMenuToggle(item.id)}>
-                                    {item.label}
-                                </button>
-                            </li>
-                        ))}
-                        <div className='flex space-x-4 mt-4'>
-                            <a href="https://www.github.com/mahtabkhan9" target="_blank" rel="noopener noreferrer" className='text-gray-200 hover:text-[#8245ec] transition duration-300'>
-                                <FaGithub size={24} />
-                            </a>
-                            <a href="https://www.linkedin.com/in/mahtab7860/" target="_blank" rel="noopener noreferrer" className='text-gray-200 hover:text-[#8245ec] transition duration-300'>
-                                <FaLinkedin size={24} />
-                            </a>
-                        </div>
-                    </ul>
-                </div>
-            )}
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-[1.1rem] lg:gap-[2.5rem]">
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollTo(item.id)}
+              style={{ cursor: 'none', background: 'none', border: 'none', display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+              className="nav-link"
+            >
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', color: 'var(--accent)', letterSpacing: '0.05em' }}>
+                {item.num}
+              </span>
+              {item.label}
+            </button>
+          ))}
         </nav>
-    )
-}
 
-export default Navbar
+        {/* Right side: Social + CTA */}
+        <div className="flex items-center gap-[0.75rem] lg:gap-[1.5rem]">
+          <div className="hidden md:flex items-center gap-[0.6rem] lg:gap-[1rem]">
+            <a href="https://github.com/mahtabkhan9" target="_blank" rel="noopener noreferrer"
+              style={{ color: 'var(--text-muted)', cursor: 'none', transition: 'color 0.2s', display: 'flex' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--text)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
+            >
+              <FiGithub size={18} />
+            </a>
+            <a href="https://linkedin.com/in/mahtab7860" target="_blank" rel="noopener noreferrer"
+              style={{ color: 'var(--text-muted)', cursor: 'none', transition: 'color 0.2s', display: 'flex' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--text)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
+            >
+              <FiLinkedin size={18} />
+            </a>
+          </div>
+
+          <a
+            href="mailto:mahtabalam7173@gmail.com"
+            className="btn-primary hidden md:inline-flex"
+            style={{ padding: '0.6rem 1.25rem', fontSize: '0.8rem' }}
+          >
+            Let's Talk <FiArrowUpRight size={14} />
+          </a>
+
+          {/* Hamburger */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="flex flex-col md:hidden"
+            style={{ cursor: 'none', background: 'none', border: 'none', color: 'var(--text)', gap: '5px', padding: '4px' }}
+            aria-label="Toggle menu"
+          >
+            <motion.span animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+              style={{ display: 'block', width: '22px', height: '1.5px', background: 'currentColor', transformOrigin: 'center', transition: 'background 0.2s' }} />
+            <motion.span animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+              style={{ display: 'block', width: '22px', height: '1.5px', background: 'currentColor' }} />
+            <motion.span animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+              style={{ display: 'block', width: '22px', height: '1.5px', background: 'currentColor', transformOrigin: 'center' }} />
+          </button>
+        </div>
+      </motion.header>
+
+      {/* Mobile Full-screen overlay */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            data-lenis-prevent
+            initial={{ clipPath: 'inset(0 0 100% 0)' }}
+            animate={{ clipPath: 'inset(0 0 0% 0)' }}
+            exit={{ clipPath: 'inset(0 0 100% 0)' }}
+            transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 400,
+              background: 'var(--bg)',
+              display: 'flex',
+              flexDirection: 'column',
+              padding: '8rem 5vw 4rem',
+              overflowY: 'auto',
+            }}
+          >
+            <nav style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+              {navItems.map((item, i) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + i * 0.07, ease: [0.16, 1, 0.3, 1], duration: 0.6 }}
+                  style={{ borderBottom: '1px solid var(--border)' }}
+                >
+                  <motion.button
+                    onClick={() => scrollTo(item.id)}
+                    whileHover={{ x: 12, color: 'var(--accent)' }}
+                    transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      width: '100%',
+                      padding: '1.25rem 0',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'none',
+                      color: 'var(--text)',
+                      textAlign: 'left',
+                    }}
+                  >
+                    <span style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 8vw, 3.5rem)', fontWeight: 700, letterSpacing: '-0.02em', transition: 'color 0.2s' }}>
+                      {item.label}
+                    </span>
+                    <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', color: 'var(--accent)', letterSpacing: '0.1em' }}>
+                      {item.num}
+                    </span>
+                  </motion.button>
+                </motion.div>
+              ))}
+            </nav>
+
+            {/* Social Icons with separator */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              style={{
+                marginTop: '4rem',
+                paddingTop: '2rem',
+                borderTop: '1px solid var(--border)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.2rem'
+              }}
+            >
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
+                Connect Socially
+              </p>
+              <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                <a href="https://github.com/mahtabkhan9" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                  <motion.div
+                    whileHover={{ scale: 1.1, backgroundColor: 'var(--accent)', color: '#000', borderColor: 'var(--accent)' }}
+                    whileTap={{ scale: 0.92 }}
+                    style={{
+                      width: '44px',
+                      height: '44px',
+                      borderRadius: '50%',
+                      border: '1px solid var(--border)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'var(--text-muted)',
+                      transition: 'border-color 0.2s, background-color 0.2s'
+                    }}
+                  >
+                    <FiGithub size={20} />
+                  </motion.div>
+                </a>
+                <a href="https://linkedin.com/in/mahtab7860" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                  <motion.div
+                    whileHover={{ scale: 1.1, backgroundColor: 'var(--accent)', color: '#000', borderColor: 'var(--accent)' }}
+                    whileTap={{ scale: 0.92 }}
+                    style={{
+                      width: '44px',
+                      height: '44px',
+                      borderRadius: '50%',
+                      border: '1px solid var(--border)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'var(--text-muted)',
+                      transition: 'border-color 0.2s, background-color 0.2s'
+                    }}
+                  >
+                    <FiLinkedin size={20} />
+                  </motion.div>
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
+
+export default Navbar;

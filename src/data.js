@@ -1,4 +1,8 @@
 // Skills Section Logo's
+import React from 'react';
+import { SiAmazonwebservices, SiRender, SiJsonwebtokens, SiSocketdotio, SiRazorpay, SiOpenai, SiGooglegemini, SiLangchain } from 'react-icons/si';
+import { BsRobot } from 'react-icons/bs';
+import { FiShare2, FiImage, FiTerminal } from 'react-icons/fi';
 import htmlLogo from './assets/tech_logo/html.png';
 import cssLogo from './assets/tech_logo/css.png';
 import javascriptLogo from './assets/tech_logo/javascript.png';
@@ -50,6 +54,17 @@ import todo from './assets/work_logo/todo.png';
 
 export const SkillsInfo = [
   {
+    title: 'Languages',
+    skills: [
+      { name: 'C', logo: cLogo },
+      { name: 'C++', logo: cppLogo },
+      { name: 'Java', logo: javaLogo },
+      { name: 'Python', logo: pythonLogo },
+      { name: 'JavaScript', logo: javascriptLogo },
+      { name: 'TypeScript', logo: typescriptLogo },
+    ],
+  },
+  {
     title: 'Frontend',
     skills: [
       { name: 'HTML', logo: htmlLogo },
@@ -72,22 +87,24 @@ export const SkillsInfo = [
       { name: 'MySQL', logo: mysqlLogo },
       { name: 'MongoDB', logo: mongodbLogo },
       { name: 'Firebase', logo: firebaseLogo },
+      { name: 'Socket.io', icon: React.createElement(SiSocketdotio, { color: '#FFFFFF' }) },
+      { name: 'JWT', icon: React.createElement(SiJsonwebtokens, { color: '#D63AFF' }) },
       // { name: 'PostgreSQL', logo: postgreLogo },
     ],
   },
   {
-    title: 'Languages',
+    title: 'Gen AI',
     skills: [
-      { name: 'C', logo: cLogo },
-      { name: 'C++', logo: cppLogo },
-      { name: 'Java', logo: javaLogo },
-      { name: 'Python', logo: pythonLogo },
-      { name: 'JavaScript', logo: javascriptLogo },
-      { name: 'TypeScript', logo: typescriptLogo },
+      { name: 'OpenAI', icon: React.createElement(SiOpenai, { color: '#10A37F' }) },
+      { name: 'Google Gemini', icon: React.createElement(SiGooglegemini, { color: '#8E75FF' }) },
+      { name: 'LangChain', icon: React.createElement(SiLangchain, { color: '#12B471' }) },
+      { name: 'LangGraph', icon: React.createElement(FiShare2, { color: '#FF8C00' }) },
+      { name: 'Prompt Eng.', icon: React.createElement(BsRobot, { color: '#FF6B6B' }) },
+      { name: 'Claude Code', icon: React.createElement(FiTerminal, { color: '#D97757' }) },
     ],
   },
   {
-    title: 'Tools',
+    title: 'Tools & Cloud',
     skills: [
       { name: 'Git', logo: gitLogo },
       { name: 'GitHub', logo: githubLogo },
@@ -97,6 +114,10 @@ export const SkillsInfo = [
       { name: 'Vercel', logo: vercelLogo },
       { name: 'Netlify', logo: netlifyLogo },
       { name: 'Figma', logo: figmaLogo },
+      { name: 'AWS', icon: React.createElement(SiAmazonwebservices, { color: '#FF9900' }) },
+      { name: 'Render', icon: React.createElement(SiRender, { color: '#46E3B7' }) },
+      { name: 'ImageKit', icon: React.createElement(FiImage, { color: '#1E65F3' }) },
+      { name: 'Razorpay', icon: React.createElement(SiRazorpay, { color: '#3385FF' }) },
     ],
   },
 ];
@@ -146,29 +167,29 @@ export const education = [
     id: 0,
     img: gceLogo,
     school: "Gaya College of Engineering, Gaya",
-    date: "Sept 2022 - July 2026",
+    date: "2022 - 2026",
     grade: "8.2 CGPA",
     desc: "I am pursuing my final-year of B.Tech in CSE from Gaya College of Engineering, Gaya. During my time at GCE, I gained a strong foundation in programming, software development, and computer science principles. I have studied courses such as Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Web Development, and Software Engineering. I actively participated in various workshops and technical events, which enhanced my skills and knowledge. My experience at GCE Gaya has been instrumental in shaping my technical abilities and professional growth.",
     degree: "Bachelor of Technology - Computer Science & Engineering",
   },
-  {
-    id: 1,
-    img: bsebLogo,
-    school: "Muslim Minority Inter College, Bhagalpur",
-    date: "2020",
-    grade: "83.60%",
-    desc: "I completed my class 12 boards education from Muslim Minority Inter College, under BSEB Patna board.",
-    degree: "Class 12 - PCM",
-  },
-  {
-    id: 2,
-    img: bsebLogo,
-    school: "Muslim High School, Bhagalpur",
-    date: "2018",
-    grade: "62.60%",
-    desc: "I completed my class 10 boards education from Muslim High School, under BSEB Patna board.",
-    degree: "Class 10",
-  },
+  // {
+  //   id: 1,
+  //   img: bsebLogo,
+  //   school: "Muslim Minority Inter College, Bhagalpur",
+  //   date: "2020",
+  //   grade: "83.60%",
+  //   desc: "I completed my class 12 boards education from Muslim Minority Inter College, under BSEB Patna board.",
+  //   degree: "Class 12 - PCM",
+  // },
+  // {
+  //   id: 2,
+  //   img: bsebLogo,
+  //   school: "Muslim High School, Bhagalpur",
+  //   date: "2018",
+  //   grade: "62.60%",
+  //   desc: "I completed my class 10 boards education from Muslim High School, under BSEB Patna board.",
+  //   degree: "Class 10",
+  // },
 ];
 
 

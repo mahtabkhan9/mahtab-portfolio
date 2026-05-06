@@ -39,6 +39,7 @@ import gceLogo from './assets/education_logo/logo.jpg';
 import bsebLogo from './assets/education_logo/bseb.jpg';
 
 // Project Section Logo's
+import bookswap from './assets/work_logo/bookswap.png';
 import eventor from './assets/work_logo/eventor.png';
 import renderly from './assets/work_logo/renderly.png';
 import ems from './assets/work_logo/ems.png';
@@ -106,7 +107,7 @@ export const experiences = [
     img: creditBucketLogo,
     role: "Software Developer Intern",
     company: "CreditBucket Technologies Pvt. Ltd. (Samriddh Kendra)",
-    date: "December 2025 - Present",
+    date: "December 2025 - March 2026",
     desc: "Developed a Bank Statement Analyzer to automate financial data extraction, reducing manual processing time by 60%. Implemented data validation and parsing mechanisms to achieve 90% accuracy in transaction consistency. Built 10+ analytical modules to support internal financial assessment and reporting processes.",
     skills: [
       "JavaScript",
@@ -146,7 +147,7 @@ export const education = [
     img: gceLogo,
     school: "Gaya College of Engineering, Gaya",
     date: "Sept 2022 - July 2026",
-    grade: "8.02 CGPA",
+    grade: "8.2 CGPA",
     desc: "I am pursuing my final-year of B.Tech in CSE from Gaya College of Engineering, Gaya. During my time at GCE, I gained a strong foundation in programming, software development, and computer science principles. I have studied courses such as Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Web Development, and Software Engineering. I actively participated in various workshops and technical events, which enhanced my skills and knowledge. My experience at GCE Gaya has been instrumental in shaping my technical abilities and professional growth.",
     degree: "Bachelor of Technology - Computer Science & Engineering",
   },
@@ -174,16 +175,26 @@ export const education = [
 export const projects = [
   {
     id: 0,
+    title: "BookSwap - A C2C Book Selling Marketplace",
+    description:
+      "Full-stack MERN marketplace for students to buy, sell and swap books with real-time chat. Built a credit-based listing system with Razorpay integration and implemented Google Gemini AI for automatic book data extraction. Developed secure REST APIs with JWT, OTP authentication and Socket.io powered real-time messaging.",
+    image: bookswap,
+    tags: ["React.js", "Redux Toolkit", "Node.js", "Express.js", "MongoDB", "Socket.io", "JWT", "Razorpay", "Google Gemini API", "ImageKit", "Tailwind CSS", "REST API"],
+    github: "https://github.com/mahtabkhan9/bookswap-web",
+    webapp: "https://bookswap-web-sigma.vercel.app/",
+  },
+  {
+    id: 1,
     title: "Eventor",
     description:
-      "A full-stack event management platform built using the MERN stack. Users can create, manage, and RSVP to events with real-time capacity control. Implemented atomic MongoDB operations to eliminate 100% of overbooking scenarios under concurrent requests. Designed efficient REST APIs for CRUD operations, ensuring fast response times and seamless user experience.",
+      "Full-stack event management platform built using the MERN stack. Users can create, manage, and RSVP to events with real-time capacity control. Implemented atomic MongoDB to eliminate 100% of overbooking scenarios under concurrent requests. Designed efficient REST APIs for CRUD operations, ensuring fast response times.",
     image: eventor,
     tags: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "REST API", "Concurrency Handling", "CRUD"],
     github: "https://github.com/mahtabkhan9/eventor",
     webapp: "https://eventor-ten.vercel.app/",
   },
   {
-    id: 1,
+    id: 2,
     title: "Renderly.ai",
     description:
       "A full-stack AI image generation platform built using the MERN stack. Users can generate AI images from text prompts via the Clipdrop API, manage credits, and purchase more via Razorpay. Features secure JWT authentication, user dashboards, and a modern, responsive UI using Tailwind CSS and Framer Motion.",
@@ -193,7 +204,7 @@ export const projects = [
     webapp: "https://renderly-omega.vercel.app/",
   },
   {
-    id: 2,
+    id: 3,
     title: "Employee Management System",
     description:
       "A React-based application to manage employees with role-based dashboards. Admins can assign tasks, track status, and manage employees, while employees view and update their assigned tasks. Data persistence is handled using localStorage, and Context API is used for managing global authentication state.",
@@ -203,7 +214,7 @@ export const projects = [
     webapp: "https://ems-pink.vercel.app/",
   },
   {
-    id: 3,
+    id: 4,
     title: "Drive - File Storage Backend App",
     description:
       "A secure file storage backend application built with Node.js, Express, and MongoDB. It supports user authentication using JWT, file upload and retrieval via Cloudinary, and file handling through Multer. The interface is rendered using EJS templates and styled with Tailwind CSS.",
@@ -213,7 +224,7 @@ export const projects = [
     webapp: "https://drive-4ii8.onrender.com/",
   },
   {
-    id: 4,
+    id: 5,
     title: "User Management CRUD App",
     description:
       "A user management app for managing user data, including features for creating, reading, updating, and deleting users.",
@@ -223,7 +234,7 @@ export const projects = [
     webapp: "https://user-management-app-gamma.vercel.app/",
   },
   {
-    id: 5,
+    id: 6,
     title: "ToDo List App",
     description:
       "A task management application that allows users to add, and delete tasks, helping them stay organized and productive.",

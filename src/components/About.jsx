@@ -142,7 +142,6 @@ const About = () => {
   const stats = [
     { num: '10+', label: 'Projects Built' },
     { num: '2', label: 'Internships' },
-    { num: '1', label: 'Year Experience' },
   ];
 
   return (
@@ -257,7 +256,7 @@ const About = () => {
                 transition={{ duration: 0.8, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
                 style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '2rem', alignItems: 'center' }}
               >
-                <a href="https://drive.google.com/file/d/1LFhqR8S4wf4FpwOsBDiCsLHR_vwSKx4D/view?usp=drive_link"
+                <a href="https://drive.google.com/file/d/1Tsn0GeXYyvogBLAmpyrUz2kgUIFfmzcT/view?usp=drive_link"
                   target="_blank" rel="noopener noreferrer" className="btn-primary">
                   View Resume
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

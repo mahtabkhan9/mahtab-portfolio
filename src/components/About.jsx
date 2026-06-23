@@ -90,7 +90,7 @@ const About = () => {
           <pre style={{ margin: 0 }}>
             <code style={{ color: 'var(--text)' }}>
               <span style={{ color: '#ff79c6' }}>const</span> developer <span style={{ color: '#ff79c6' }}>=</span> <span style={{ color: '#f8f8f2' }}>{'{'}</span>{'\n'}
-              {'  '}name<span style={{ color: '#ff79c6' }}>:</span> <span style={{ color: 'var(--accent)' }}>"Mahtab Alam"</span>,<span style={{ color: 'rgba(255,255,255,0.15)' }}> // Lead Engineer</span>{'\n'}
+              {'  '}name<span style={{ color: '#ff79c6' }}>:</span> <span style={{ color: 'var(--accent)' }}>"Mahtab Alam"</span>,<span style={{ color: 'rgba(255,255,255,0.15)' }}> // Software Engineer</span>{'\n'}
               {'  '}role<span style={{ color: '#ff79c6' }}>:</span> <span style={{ color: '#f1fa8c' }}>"Full Stack Developer"</span>,{'\n'}
               {'  '}location<span style={{ color: '#ff79c6' }}>:</span> <span style={{ color: '#f1fa8c' }}>"India"</span>,{'\n'}
               {'  '}skills<span style={{ color: '#ff79c6' }}>:</span> <span style={{ color: '#f8f8f2' }}>{'['}</span>{'\n'}
@@ -99,7 +99,6 @@ const About = () => {
               {'    '}<span style={{ color: '#50fa7b' }}>"REST APIs"</span>, <span style={{ color: '#50fa7b' }}>"DevOps"</span>,{'\n'}
               {'    '}<span style={{ color: '#50fa7b' }}>"Gen AI"</span>, <span style={{ color: '#50fa7b' }}>"Git & GitHub"</span>{'\n'}
               {'  '}<span style={{ color: '#f8f8f2' }}>{']'}</span>,{'\n'}
-              {'  '}experience<span style={{ color: '#ff79c6' }}>:</span> <span style={{ color: '#bd93f9' }}>"1+ Year"</span>,{'\n'}
               {'  '}projectsBuilt<span style={{ color: '#ff79c6' }}>:</span> <span style={{ color: '#bd93f9' }}>10</span>,{'\n'}
               {'  '}openToWork<span style={{ color: '#ff79c6' }}>:</span> <span style={{ color: '#8be9fd' }}>true</span>,{'\n'}
               {'  '}solveProblems<span style={{ color: '#ff79c6' }}>:</span> <span style={{ color: '#8be9fd' }}>function</span>() <span style={{ color: '#f8f8f2' }}>{'{'}</span>{'\n'}

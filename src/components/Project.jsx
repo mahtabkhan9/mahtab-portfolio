@@ -203,6 +203,26 @@ const Project = () => {
         })}
       </div>
 
+      {/* View All */}
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '3.5rem' }}>
+        <a
+          href="https://github.com/mahtabkhan9?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: '0.6rem',
+            fontFamily: 'var(--font-body)', fontSize: '0.85rem', fontWeight: 600,
+            letterSpacing: '0.08em', textTransform: 'uppercase',
+            color: 'var(--text)', border: '1px solid var(--border)', borderRadius: '999px',
+            padding: '0.9rem 2rem', textDecoration: 'none', cursor: 'none', transition: 'all 0.2s',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.color = 'var(--accent)'; }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text)'; }}
+        >
+          View All <FiGithub size={16} />
+        </a>
+      </div>
+
       {/* Modal */}
       <AnimatePresence>
         {selected && (

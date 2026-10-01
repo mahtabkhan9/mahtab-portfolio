@@ -1,8 +1,10 @@
 // Skills Section Logo's
 import React from 'react';
-import { SiAmazonwebservices, SiRender, SiJsonwebtokens, SiSocketdotio, SiRazorpay, SiOpenai, SiGooglegemini, SiLangchain } from 'react-icons/si';
+import { SiRender, SiJsonwebtokens, SiSocketdotio, SiRazorpay, SiGooglegemini, SiLangchain } from 'react-icons/si';
 import { BsRobot } from 'react-icons/bs';
-import { FiShare2, FiImage, FiTerminal } from 'react-icons/fi';
+import { AiFillOpenAI } from 'react-icons/ai';
+import { FaAws } from 'react-icons/fa';
+import { FiShare2, FiImage, FiTerminal, FiCpu, FiBox, FiDatabase, FiMonitor, FiGlobe, FiServer } from 'react-icons/fi';
 import htmlLogo from './assets/tech_logo/html.png';
 import cssLogo from './assets/tech_logo/css.png';
 import javascriptLogo from './assets/tech_logo/javascript.png';
@@ -37,6 +39,7 @@ import phpLogo from './assets/tech_logo/php.png';
 // Experience Section Logo's
 import creditBucketLogo from './assets/company_logo/creditbucketLogo.jpg';
 import grentechLogo from './assets/company_logo/grentechin_logo.jpeg';
+import iitPatnaLogo from './assets/company_logo/iitpatna.png';
 
 // Education Section Logo's
 import gceLogo from './assets/education_logo/logo.jpg';
@@ -46,10 +49,7 @@ import bsebLogo from './assets/education_logo/bseb.jpg';
 import bookswap from './assets/work_logo/bookswap.png';
 import eventor from './assets/work_logo/eventor.png';
 import renderly from './assets/work_logo/renderly.png';
-import ems from './assets/work_logo/ems.png';
-import drive from './assets/work_logo/drive.png';
-import user from './assets/work_logo/user.png';
-import todo from './assets/work_logo/todo.png';
+import restrobook from './assets/work_logo/restrobook.png';
 
 
 export const SkillsInfo = [
@@ -65,13 +65,23 @@ export const SkillsInfo = [
     ],
   },
   {
+    title: 'Core CS',
+    skills: [
+      { name: 'DSA', icon: React.createElement(FiCpu, { color: '#8be9fd' }) },
+      { name: 'OOP', icon: React.createElement(FiBox, { color: '#ff79c6' }) },
+      { name: 'DBMS', icon: React.createElement(FiDatabase, { color: '#50fa7b' }) },
+      { name: 'Operating Systems', icon: React.createElement(FiMonitor, { color: '#f1fa8c' }) },
+      { name: 'Computer Networks', icon: React.createElement(FiGlobe, { color: '#bd93f9' }) },
+    ],
+  },
+  {
     title: 'Frontend',
     skills: [
       { name: 'HTML', logo: htmlLogo },
       { name: 'CSS', logo: cssLogo },
       { name: 'JavaScript', logo: javascriptLogo },
       { name: 'React JS', logo: reactjsLogo },
-      { name: 'Redux', logo: reduxLogo },
+      { name: 'Redux Toolkit', logo: reduxLogo },
       { name: 'Next JS', logo: nextjsLogo },
       { name: 'Tailwind CSS', logo: tailwindcssLogo },
       { name: 'Bootstrap', logo: bootstrapLogo },
@@ -84,8 +94,10 @@ export const SkillsInfo = [
       // { name: 'Springboot', logo: springbootLogo },
       { name: 'Node JS', logo: nodejsLogo },
       { name: 'Express JS', logo: expressjsLogo },
+      { name: 'REST APIs', icon: React.createElement(FiServer, { color: '#61DAFB' }) },
       { name: 'MySQL', logo: mysqlLogo },
       { name: 'MongoDB', logo: mongodbLogo },
+      { name: 'PostgreSQL', logo: postgreLogo },
       { name: 'Firebase', logo: firebaseLogo },
       { name: 'Socket.io', icon: React.createElement(SiSocketdotio, { color: '#FFFFFF' }) },
       { name: 'JWT', icon: React.createElement(SiJsonwebtokens, { color: '#D63AFF' }) },
@@ -95,7 +107,7 @@ export const SkillsInfo = [
   {
     title: 'Gen AI',
     skills: [
-      { name: 'OpenAI', icon: React.createElement(SiOpenai, { color: '#10A37F' }) },
+      { name: 'OpenAI', icon: React.createElement(AiFillOpenAI, { color: '#10A37F' }) },
       { name: 'Google Gemini', icon: React.createElement(SiGooglegemini, { color: '#8E75FF' }) },
       { name: 'LangChain', icon: React.createElement(SiLangchain, { color: '#12B471' }) },
       { name: 'LangGraph', icon: React.createElement(FiShare2, { color: '#FF8C00' }) },
@@ -114,7 +126,7 @@ export const SkillsInfo = [
       { name: 'Vercel', logo: vercelLogo },
       { name: 'Netlify', logo: netlifyLogo },
       { name: 'Figma', logo: figmaLogo },
-      { name: 'AWS', icon: React.createElement(SiAmazonwebservices, { color: '#FF9900' }) },
+      { name: 'AWS', icon: React.createElement(FaAws, { color: '#FF9900' }) },
       { name: 'Render', icon: React.createElement(SiRender, { color: '#46E3B7' }) },
       { name: 'ImageKit', icon: React.createElement(FiImage, { color: '#1E65F3' }) },
       { name: 'Razorpay', icon: React.createElement(SiRazorpay, { color: '#3385FF' }) },
@@ -124,21 +136,40 @@ export const SkillsInfo = [
 
 export const experiences = [
   {
+    id: 2,
+    img: iitPatnaLogo,
+    role: "Full Stack Engineer Intern",
+    company: "Indian Institute of Technology Patna (Incubation Centre)",
+    date: "August 2026 - Present",
+    desc: "Developing the Income Profiling Engine with CreditBucket Technologies Pvt. Ltd., incubated at IIT Patna, for borrower data collection and analysis. Building Node.js/Express.js backend services, REST APIs, and the Conversational Orchestrator. Implementing session workflows, document uploads, identity/consent flows, and profile processing. Working with PostgreSQL, Redis/BullMQ, Docker, and third-party APIs in a modular-monolith architecture.",
+    skills: [
+      "Node JS",
+      "Express JS",
+      "REST APIs",
+      "PostgreSQL",
+      "Redis",
+      "BullMQ",
+      "Docker",
+      "Third-party APIs",
+      "Modular Monolith"
+    ],
+  },
+  {
     id: 0,
     img: creditBucketLogo,
     role: "Software Developer Intern",
     company: "CreditBucket Technologies Pvt. Ltd. (Samriddh Kendra)",
-    date: "December 2025 - March 2026",
-    desc: "Developed a Bank Statement Analyzer to automate financial data extraction, reducing manual processing time by 60%. Implemented data validation and parsing mechanisms to achieve 90% accuracy in transaction consistency. Built 10+ analytical modules to support internal financial assessment and reporting processes.",
+    date: "December 2025 - January 2026",
+    desc: "Worked on a Bank Statement Analyzer for processing and analyzing financial transaction data. Developed backend modules for automated financial analysis, reporting, and financial record processing. Contributed to the Loan Origination System (LOS) by implementing frontend features, fixing bugs, and improving application performance.",
     skills: [
       "JavaScript",
       "Node JS",
       "Express JS",
       "MongoDB",
-      "Data Validation",
-      "Data Parsing",
       "REST APIs",
-      "Analytical Modules Development"
+      "Financial Data Processing",
+      "Loan Origination System",
+      "Bug Fixing"
     ],
   },
   {
@@ -168,7 +199,7 @@ export const education = [
     img: gceLogo,
     school: "Gaya College of Engineering, Gaya",
     date: "2022 - 2026",
-    grade: "8.2 CGPA",
+    grade: "8.21 CGPA",
     desc: "I am pursuing my final-year of B.Tech in CSE from Gaya College of Engineering, Gaya. During my time at GCE, I gained a strong foundation in programming, software development, and computer science principles. I have studied courses such as Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Web Development, and Software Engineering. I actively participated in various workshops and technical events, which enhanced my skills and knowledge. My experience at GCE Gaya has been instrumental in shaping my technical abilities and professional growth.",
     degree: "Bachelor of Technology - Computer Science & Engineering",
   },
@@ -198,11 +229,21 @@ export const projects = [
     id: 0,
     title: "BookSwap - A C2C Book Selling Marketplace",
     description:
-      "Full-stack MERN marketplace for students to buy, sell and swap books with real-time chat. Built a credit-based listing system with Razorpay integration and implemented Google Gemini AI for automatic book data extraction. Developed secure REST APIs with JWT, OTP authentication and Socket.io powered real-time messaging.",
+      "Full-stack MERN marketplace for students to buy, sell and swap books with real-time chat. Created 15+ REST APIs for authentication, book listings, transactions and messaging. Integrated Socket.io for real-time buyer-seller communication, Razorpay payments, and Google Gemini AI to automatically extract book details, reducing average listing creation time to under 30 seconds.",
     image: bookswap,
     tags: ["React.js", "Redux Toolkit", "Node.js", "Express.js", "MongoDB", "Socket.io", "JWT", "Razorpay", "Google Gemini API", "ImageKit", "Tailwind CSS", "REST API"],
     github: "https://github.com/mahtabkhan9/bookswap-web",
     webapp: "https://bookswap-web-sigma.vercel.app/",
+  },
+  {
+    id: 7,
+    title: "RestroBook - Restaurant Reservation System",
+    description:
+      "Full-stack MERN restaurant reservation system with secure role-based access control. Developed real-time table booking with availability checks, conflict detection, and capacity validation. Created separate customer and admin dashboards for reservation, table, and attendance management, and automated reservation status updates using cron jobs.",
+    image: restrobook,
+    tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "JWT", "Axios", "Cron Jobs", "RBAC"],
+    github: "https://github.com/mahtabkhan9/restrobook",
+    webapp: "https://restrobook.vercel.app",
   },
   {
     id: 1,
@@ -224,45 +265,5 @@ export const projects = [
     github: "https://github.com/mahtabkhan9/renderly",
     webapp: "https://renderly-omega.vercel.app/",
   },
-  {
-    id: 3,
-    title: "Employee Management System",
-    description:
-      "A React-based application to manage employees with role-based dashboards. Admins can assign tasks, track status, and manage employees, while employees view and update their assigned tasks. Data persistence is handled using localStorage, and Context API is used for managing global authentication state.",
-    image: ems,
-    tags: ["React.js", "Tailwind CSS", "JavaScript", "Context API", "LocalStorage"],
-    github: "https://github.com/mahtabkhan9/ems",
-    webapp: "https://ems-pink.vercel.app/",
-  },
-  {
-    id: 4,
-    title: "Drive - File Storage Backend App",
-    description:
-      "A secure file storage backend application built with Node.js, Express, and MongoDB. It supports user authentication using JWT, file upload and retrieval via Cloudinary, and file handling through Multer. The interface is rendered using EJS templates and styled with Tailwind CSS.",
-    image: drive,
-    tags: ["Node.js", "Express.js", "MongoDB", "JWT", "Cloudinary", "Multer", "EJS", "Tailwind CSS"],
-    github: "https://github.com/mahtabkhan9/drive",
-    webapp: "https://drive-4ii8.onrender.com/",
-  },
-  {
-    id: 5,
-    title: "User Management CRUD App",
-    description:
-      "A user management app for managing user data, including features for creating, reading, updating, and deleting users.",
-    image: user,
-    tags: ["React.js", "Redux Toolkit", "JavaScipt", "JSON PLaceholder API", "Tailwind CSS"],
-    github: "https://github.com/mahtabkhan9/user-management-app",
-    webapp: "https://user-management-app-gamma.vercel.app/",
-  },
-  {
-    id: 6,
-    title: "ToDo List App",
-    description:
-      "A task management application that allows users to add, and delete tasks, helping them stay organized and productive.",
-    image: todo,
-    tags: ["Next.js", "React.js", "Tailwind CSS"],
-    github: "https://github.com/mahtabkhan9/ToDoList",
-    webapp: "https://to-do-list-alpha-puce-64.vercel.app/",
-  }
 ];
 

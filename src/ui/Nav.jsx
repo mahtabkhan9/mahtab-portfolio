@@ -26,7 +26,14 @@ const Palette = ({ open, onClose }) => {
 
   const list = actions.filter((a) => a.label.toLowerCase().includes(q.trim().toLowerCase()));
 
-  useEffect(() => { if (open) { setQ(''); setSel(0); setTimeout(() => input.current?.focus(), 30); } }, [open]);
+  // below 1000px the same dialog doubles as the mobile nav (opened by tapping
+  // "Menu", not ⌘K), so autofocusing the search input there would pop the
+  // on-screen keyboard just to show a list of links
+  useEffect(() => {
+    if (!open) return;
+    setQ(''); setSel(0);
+    if (window.matchMedia('(min-width: 1001px)').matches) setTimeout(() => input.current?.focus(), 30);
+  }, [open]);
   useEffect(() => { setSel(0); }, [q]);
 
   // keep the highlighted row scrolled into the visible part of the list

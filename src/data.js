@@ -246,16 +246,6 @@ export const projects = [
     webapp: "https://restrobook.vercel.app",
   },
   {
-    id: 1,
-    title: "Eventor",
-    description:
-      "Full-stack event management platform built using the MERN stack. Users can create, manage, and RSVP to events with real-time capacity control. Implemented atomic MongoDB to eliminate 100% of overbooking scenarios under concurrent requests. Designed efficient REST APIs for CRUD operations, ensuring fast response times.",
-    image: eventor,
-    tags: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "REST API", "Concurrency Handling", "CRUD"],
-    github: "https://github.com/mahtabkhan9/eventor",
-    webapp: "https://eventor-ten.vercel.app/",
-  },
-  {
     id: 2,
     title: "Renderly.ai",
     description:
@@ -264,6 +254,16 @@ export const projects = [
     tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Motion", "JWT", "Razorpay", "API"],
     github: "https://github.com/mahtabkhan9/renderly",
     webapp: "https://renderly-omega.vercel.app/",
+  },
+  {
+    id: 1,
+    title: "Eventor",
+    description:
+      "Full-stack event management platform built using the MERN stack. Users can create, manage, and RSVP to events with real-time capacity control. Implemented atomic MongoDB to eliminate 100% of overbooking scenarios under concurrent requests. Designed efficient REST APIs for CRUD operations, ensuring fast response times.",
+    image: eventor,
+    tags: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "REST API", "Concurrency Handling", "CRUD"],
+    github: "https://github.com/mahtabkhan9/eventor",
+    webapp: "https://eventor-ten.vercel.app/",
   },
 ];
 

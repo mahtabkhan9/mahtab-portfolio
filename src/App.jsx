@@ -1,66 +1,75 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Lenis from 'lenis';
-import Navbar from './components/Navbar';
-import About from './components/About';
-import Skills from './components/Skills';
-import Experience from './components/Experience';
-import Education from './components/Education';
-import Project from './components/Project';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import Profiles from './components/Profiles';
-import CustomCursor from './components/CustomCursor';
-import Loader from './components/Loader';
+import { gsap, ScrollTrigger, SplitText, prefersReduced } from './lib/gsap';
+import { setLenis } from './lib/scroll';
+import { Preloader } from './ui/bits';
+import Nav from './ui/Nav';
+import Hero from './ui/Hero';
+import { Experience, Skills, Projects, Profiles, Education, Contact } from './ui/Sections';
+import './ui/ui.css';
 
 const App = () => {
-  const [loaded, setLoaded] = useState(false);
+  const [ready, setReady] = useState(() => prefersReduced());
+  const done = useCallback(() => setReady(true), []);
+
+  useEffect(() => { document.documentElement.classList.toggle('is-loading', !ready); }, [ready]);
 
   useEffect(() => {
-    if (!loaded) return;
+    const reduce = prefersReduced();
+    let lenis = null, tick, cancelled = false;
+    const splits = [];
 
-    const lenis = new Lenis({
-      duration: 1.3,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-    });
+    if (!reduce) {
+      lenis = new Lenis({ duration: 1.1 });
+      setLenis(lenis);
+      lenis.on('scroll', ScrollTrigger.update);
+      tick = (t) => lenis.raf(t * 1000);
+      gsap.ticker.add(tick);
+      gsap.ticker.lagSmoothing(0);
+    }
 
-    const raf = (time) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+    const setup = () => {
+      if (cancelled || reduce) return;
+      document.querySelectorAll('[data-split]').forEach((el) => {
+        const sp = SplitText.create(el, {
+          type: 'lines', mask: 'lines', autoSplit: true,
+          onSplit: (self) => gsap.from(self.lines, { yPercent: 105, duration: 1.1, ease: 'power4.out', stagger: 0.08, scrollTrigger: { trigger: el, start: 'top 90%', once: true } }),
+        });
+        splits.push(sp);
+      });
+      gsap.utils.toArray('[data-fade]').forEach((el) => {
+        gsap.from(el, { opacity: 0, y: 28, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 92%', once: true } });
+      });
+      ScrollTrigger.refresh();
     };
-    requestAnimationFrame(raf);
+    document.fonts.ready.then(setup);
 
-    return () => lenis.destroy();
-  }, [loaded]);
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener('load', refresh);
+    return () => {
+      cancelled = true;
+      window.removeEventListener('load', refresh);
+      splits.forEach((s) => s.revert());
+      if (tick) gsap.ticker.remove(tick);
+      lenis?.destroy();
+      setLenis(null);
+    };
+  }, []);
 
   return (
-    <div style={{ position: 'relative', width: '100%', minHeight: '100vh' }}>
-      {/* Noise grain overlay */}
-      <div className="noise-overlay" aria-hidden="true" />
-
-      {/* Custom cursor (desktop only) */}
-      <CustomCursor />
-
-      {/* Preloader */}
-      {!loaded && <Loader onComplete={() => setLoaded(true)} />}
-
-      {/* Main site */}
-      <div style={{ background: 'var(--bg)', color: 'var(--text)', minHeight: '100vh' }}>
-        <Navbar />
-        <main>
-          <About />
-          <Skills />
-          <Project />
-          <Experience />
-          <Education />
-          <Contact />
-          <Profiles />
-        </main>
-        <Footer />
-      </div>
-    </div>
+    <>
+      {!ready && <Preloader onDone={done} />}
+      <Nav />
+      <main className="frame">
+        <Hero ready={ready} />
+        <Experience />
+        <Skills />
+        <Projects />
+        <Education />
+        <Profiles />
+        <Contact />
+      </main>
+    </>
   );
 };
 
